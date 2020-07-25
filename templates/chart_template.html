@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart template</title>
+</head>
+<body>
+<table>
+    <thead>
+        <td>Позиция</td><td>Исполнитель</td><td>Песня</td>
+    </thead>
+    {% for row in rows %}
+    <tr>
+        <td>{{row.pos}}</td>
+        <td>{{row.artist}}</td>
+        <td>{{row.title}}</td>
+    </tr>
+    <tr>
+        <td colspan="3">{{row.href}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
