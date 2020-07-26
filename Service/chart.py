@@ -64,7 +64,7 @@ class ChartCrawler(object):
         return template.render(rows=self.result)
 
     def save_html_to_file(self):
-        f = open('./charts/{filename}'.format(filename = self.file_path), 'w', encoding='UTF-8')
+        f = open('./chart_results/{filename}'.format(filename = self.file_path), 'w', encoding='UTF-8')
         f.write(self.get_html_result())
         f.close()
 
