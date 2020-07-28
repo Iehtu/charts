@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from jinja2 import Environment, FileSystemLoader
 from selenium.webdriver.firefox.options import Options
+from sys import platform
 
 class ChartCrawler(object):
     CHARTS_URL = 'https://www.officialcharts.com/charts/singles-chart/{date}'
@@ -20,7 +21,10 @@ class ChartCrawler(object):
         self.result = []
         options = Options()
         options.headless = True
-        self.webdriver = webdriver.Firefox(executable_path='./bin/geckodriver.exe', options=options)
+        if platform=='linux' or platform=='linux2':
+            self.webdriver = webdriver.Firefox(executable_path='./bin/geckodriver', options=options)
+        else:
+            self.webdriver = webdriver.Firefox(executable_path='./bin/geckodriver.exe', options=options)
         self.file_path = "{day}{month}{year}.html".format(day = day, month=month, year=year)
 
     def __del__(self):
